@@ -1,0 +1,22 @@
+package com.testscripts;
+
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TC_Logout_01 extends TC_Login_01 {
+	@Test(priority = 1)
+	public void Logout() {
+		logoutpage.getlogout().click();
+		
+		if(driver.findElement(By.linkText("Log in")).isDisplayed()) {
+			 System.out.println("Test Passed!, Successfully logged out!!");
+		}
+		else {
+			loginPage.forpass();
+			System.out.println("Test Failed!");	
+		}
+		
+	}
+
+}
