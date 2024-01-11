@@ -1,0 +1,75 @@
+package com.testscripts;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+public class TC_Checkout_01 extends TC_ProductsView_01 {
+	@Override
+	public void Productview() {				
+		productview.getelectronics().click();	
+		productview.getcam().click();
+		productview.getnikon().click();
+		productview.getaddtocart().click();
+		productview.getshoppingcart().click();
+	}
+	@Test(priority =2)
+	public void checkout() {
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			checkoutpage.getcheckbox().click();
+			checkoutpage.getcheckout().click();	
+	
+		    if (driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[1]/div[2]/form/div/div/div[2]/div/div/div[5]/label")).isDisplayed()) {
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[1]/div[2]/form/div/div/div[2]/div/div/div[5]/select")));
+			
+				WebElement e1 = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[1]/div[2]/form/div/div/div[2]/div/div/div[5]/select"));
+				Select s1 = new Select(e1);
+				s1.selectByVisibleText("India");
+				
+				checkoutpage.getcity().sendKeys("Pune");
+				checkoutpage.getaddess().sendKeys("abcdefg");
+				checkoutpage.getpcode().sendKeys("123456");
+				checkoutpage.getphone().sendKeys("1234567890");
+				checkoutpage.getcontinue().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[3]/div[2]/form/div[2]/button")));
+				checkoutpage.getcontinue2().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[4]/div[2]/div/button")));
+				checkoutpage.getcontinue3().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[5]/div[2]/div/button")));
+				checkoutpage.getcontinue4().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[6]/div[2]/div[2]/button")));
+				checkoutpage.getconfirm().click();
+			}
+		    
+		    else {
+		    	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[1]/div[2]/div/button[4]")));
+		    	checkoutpage.getcontinue().click();
+		    	
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[3]/div[2]/form/div[2]/button")));
+				checkoutpage.getcontinue2().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[4]/div[2]/div/button")));
+				checkoutpage.getcontinue3().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[5]/div[2]/div/button")));
+				checkoutpage.getcontinue4().click();
+				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[6]/div[2]/div[2]/button")));
+				checkoutpage.getconfirm().click();
+		    }
+		
+		
+		if(driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/div/div[2]/div[2]/a")).isDisplayed()) {
+			 System.out.println("Order is successfully processed");
+		}
+		else {
+			loginPage.forpass();
+			System.out.println("Test Failed!");	
+		}
+		
+		
+	}
+
+}
