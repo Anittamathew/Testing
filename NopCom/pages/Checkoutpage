@@ -1,0 +1,98 @@
+package com.pages;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Checkoutpage {
+	
+
+	WebDriver driver;
+	
+	public Checkoutpage(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+    }
+
+	@FindBy(name = "termsofservice")
+	WebElement checkbox;
+	public WebElement getcheckbox() {
+		return checkbox;
+	}
+	
+	@FindBy(name="checkout")
+	WebElement checkout;
+	public WebElement getcheckout() {
+		return checkout;
+	}
+	
+	@FindBy(name = "BillingNewAddress.CountryId")
+	WebElement country;
+	public WebElement getcountry() {
+		return country;
+	}
+	
+	@FindBy(name = "BillingNewAddress.City")
+	WebElement city;
+	public WebElement getcity() {
+		return city;
+	}
+	
+	@FindBy(name = "BillingNewAddress.Address1")
+	WebElement address1;
+	public WebElement getaddess() {
+		return address1;
+	}
+	
+	@FindBy(name = "BillingNewAddress.ZipPostalCode")
+	WebElement pcode;
+	public WebElement getpcode() {
+		return pcode;
+	}
+	
+	@FindBy(name = "BillingNewAddress.PhoneNumber")
+	WebElement phone;
+	public WebElement getphone() {
+		return phone;		
+	}
+	
+	@FindBy(name = "save")
+	WebElement continiue;
+	public WebElement getcontinue() {
+		return continiue;		
+	}
+	
+	@FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div[2]/ol/li[3]/div[2]/form/div[2]/button")
+	
+	WebElement continue2;
+	public WebElement getcontinue2() {		
+		return continue2;
+	}
+	
+
+	@FindBy(xpath = "//*[@id=\"payment-method-buttons-container\"]/button")
+	WebElement continue3;
+	public WebElement getcontinue3() {
+		return continue3;
+	}
+	
+	@FindBy(xpath = "//*[@id=\"payment-info-buttons-container\"]/button")
+	WebElement continue4;
+	public WebElement getcontinue4() {
+		return continue4;
+	}
+	
+	@FindBy(xpath = "//*[@id=\"confirm-order-buttons-container\"]/button")
+	WebElement confirm;
+	public WebElement getconfirm() {
+		return confirm;
+	}
+	
+	
+}
