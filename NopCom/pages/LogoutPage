@@ -1,0 +1,22 @@
+package com.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Logoutpage {
+	WebDriver driver;
+	
+	@FindBy(linkText = "Log out")
+	WebElement logout;
+	public WebElement getlogout() {
+		return logout;
+	}
+	
+	public Logoutpage(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+    }
+
+}
