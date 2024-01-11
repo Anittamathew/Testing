@@ -1,0 +1,62 @@
+package com.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Productview {
+	WebDriver driver;
+	
+	public Productview(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+    }
+	
+	
+	@FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[3]/div/div[1]/div/h2/a")
+	WebElement electronics;
+	public WebElement getelectronics() {
+		return electronics;
+	}
+	
+	@FindBy(xpath = "/html/body/div[6]/div[3]/div/div[3]/div/div[2]/div[1]/div/div[1]/div/h2/a")
+	WebElement cam;
+	public WebElement getcam() {
+		return cam;
+	}
+	
+	@FindBy(linkText = "Nikon D5500 DSLR")
+	WebElement nikon;
+	public WebElement getnikon() {
+		return nikon;
+	}
+	
+	
+	@FindBy(xpath = "//*[@id=\"add-to-wishlist-button-14\"]")
+	WebElement wishlist;
+	public WebElement getwishlist() {
+		return wishlist;
+	}
+	
+	@FindBy(xpath = "/html/body/div[6]/div[1]/div[1]/div[2]/div[1]/ul/li[3]/a")
+	WebElement wishlistlink;
+	public WebElement getwishlistlink() {
+		return wishlistlink;
+	}
+	
+	
+	@FindBy(xpath = "//*[@id=\"add-to-cart-button-14\"]")
+	WebElement addtocart;
+	public WebElement getaddtocart() {
+		return addtocart;
+	}
+	
+	@FindBy(xpath = "//*[@id=\"topcartlink\"]/a")
+	WebElement shoppingcart;
+	public WebElement getshoppingcart() {
+		return shoppingcart;
+	}
+	
+}
+	
