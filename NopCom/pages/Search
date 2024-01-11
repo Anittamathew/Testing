@@ -1,0 +1,51 @@
+package com.pages;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Search {
+	
+	WebDriver driver;
+	public Search(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+    }
+	
+
+	@FindBy(xpath = "//*[@id=\"small-search-box-form\"]/button")
+	WebElement searchbutton;
+	public WebElement getsearchbutton() {
+		return searchbutton;
+	}
+	
+	public void alertcheck() throws InterruptedException {
+		
+		Alert alert = driver.switchTo().alert();
+        String alertText = alert.getText();
+        
+        if (alert != null&&alertText.equals("Please enter some search keyword")) {
+            System.out.println("Alert is displayed correctly.");
+        } 
+        else 
+            System.out.println("Alert content is incorrect.");
+        Thread.sleep(3000);
+		alert.accept();
+		
+	}
+	
+	@FindBy(xpath = "//*[@id=\"small-searchterms\"]")
+	WebElement searchtext;
+	public WebElement getsearchtext() {
+		return searchtext;
+	}
+
+	@FindBy(xpath = "/html/body/div[6]/div[3]/div/div[2]/div/div[2]/div[3]/div/div[2]/div")
+	WebElement productgrid;
+	public WebElement getproductgrid() {
+		return productgrid;
+	}
+
+}
