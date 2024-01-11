@@ -1,0 +1,33 @@
+package com.testscripts;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class TC_Register_01 extends testbasenew {
+	
+	@Test(priority = 0)
+	
+	public void register() {
+		
+		registerPage.getregpage().click();
+		registerPage.getgender().click();
+		registerPage.getfname().sendKeys("Anitta");
+		registerPage.getlname().sendKeys("Mathew");
+		registerPage.getday();
+		registerPage.getmonth();
+		registerPage.getyear();
+		registerPage.getemail().sendKeys("anitta@gmail.com");
+		registerPage.getCompany().sendKeys("Google");
+		registerPage.getPassword().sendKeys("12345678");
+		registerPage.getConfirmPassword().sendKeys("12345678");
+		registerPage.getregister().click();
+		
+		WebElement a = driver.findElement(By.className("result"));
+		if (a.isDisplayed()) {
+			 System.out.println("Test Passed!");
+		}
+		else
+			System.out.println("Test Failed!");		
+	}	
+}
