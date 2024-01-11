@@ -1,0 +1,52 @@
+package com.testscripts;
+
+import java.io.IOException;
+import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.utility.*;
+
+public class TC_Search_01 extends TC_Login_01{
+	
+	@Test(priority = 2 ,dataProvider = "getData")
+	public void searchstore(String searchtext) throws InterruptedException {
+//     
+//	        search.getsearchbutton().click();
+//	        search.alertcheck();
+//	        search.getsearchtext().sendKeys("desktop");
+	        search.getsearchtext().sendKeys(searchtext);
+	        search.getsearchbutton().click();
+	        
+	        if(driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div[2]/div/div[2]/div[3]/div/div[2]/div")).isDisplayed()){
+				System.out.println("Record Found");
+			}
+			else {
+				System.out.println("Record not found");
+			}
+		}
+
+	@DataProvider
+	public String[][] getData() throws IOException{
+
+		String XLPath = "C:\\Users\\mathewanitta\\eclipse-workspace\\nopcom\\src\\test\\java\\testdata\\nopcomdata.xlsx";
+		String XSheetName = "Sheet1";
+
+		int rowCount = ExcelUtility.getRowCount(XLPath, XSheetName);
+		int cellCount = ExcelUtility.getCellCount(XLPath, XSheetName, rowCount);
+
+		String[][] data = new String[rowCount][cellCount];
+
+		for(int i=1; i<=rowCount;i++) {
+			for(int j=0; j<cellCount;j++) {
+				data[i-1][j] = ExcelUtility.getCellData(XLPath, XSheetName, i, j);
+
+			}
+		}
+
+		return data;
+	}
+	}
+	
+
+	
