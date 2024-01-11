@@ -1,0 +1,27 @@
+package com.testscripts;
+
+import org.openqa.selenium.By;
+import org.testng.annotations.Test;
+
+public class TC_Login_01 extends testbasenew {
+	
+	@Test
+	public void login(){	
+		
+		loginPage.getloginpage().click();
+		loginPage.getemail().sendKeys("anitta@gmail.com");
+		loginPage.getpass().sendKeys("12345678");
+		loginPage.getsub().click();
+		
+		
+		if(driver.findElement(By.linkText("Log out")).isDisplayed()) {
+			 System.out.println("Test Passed! logged in ");
+		}
+		else {
+			loginPage.forpass();
+			System.out.println("Test Failed!");	
+		}
+
+	}
+		
+}
