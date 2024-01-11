@@ -1,0 +1,58 @@
+package com.pages;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LoginPage {
+	WebDriver driver;
+	
+	public LoginPage(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+    }
+	
+	
+	@FindBy(xpath = "/html/body/div[6]/div[1]/div[1]/div[2]/div[1]/ul/li[2]/a")
+	WebElement loginpage;
+	public WebElement getloginpage() {
+		return loginpage;
+	}
+	
+	
+	@FindBy(id="Email")
+	WebElement email;
+	public WebElement getemail() {
+		return email;
+	}
+	
+	@FindBy(id="Password")
+	WebElement pass;
+	public WebElement getpass() {
+		return pass;
+	}
+	
+	@FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div[2]/div[1]/div[2]/form/div[3]/button")
+	WebElement submit;
+	public WebElement getsub() {
+		return submit;
+	}
+	
+	public void forpass() {
+		WebElement w = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/div[1]/div[2]/form/div[1]/ul"));
+		if(w.isDisplayed()) {
+			driver.findElement(By.linkText("Forgot password?")).click();
+			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+			wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[1]/h1"))));
+			driver.findElement(By.name("Email")).sendKeys("am2@gmail.com");
+			driver.findElement(By.name("send-email")).click();	
+		}
+	}
+
+}
