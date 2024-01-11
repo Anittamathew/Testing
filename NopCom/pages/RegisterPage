@@ -1,0 +1,97 @@
+package com.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
+public class RegisterPage {
+	
+	WebDriver driver;
+	
+	public RegisterPage(WebDriver Driver) {
+		this.driver = Driver;
+		PageFactory.initElements(Driver, this);
+
+    }
+	
+	@FindBy(linkText = "Register")
+	WebElement regpage;
+	public WebElement getregpage() {
+		return regpage;
+	}
+	
+	@FindBy(xpath = "//*[@id=\"gender-female\"]")
+	WebElement gender;
+	public WebElement getgender() {
+		return gender;	
+	}
+	
+	@FindBy(xpath="//*[@id=\"FirstName\"]")
+	WebElement fname;
+	public WebElement getfname(){
+		return fname;		
+	}
+	
+	@FindBy(xpath="//*[@id=\"LastName\"]")
+	WebElement lname;
+	public WebElement getlname() {
+		return lname;
+	}
+	
+		
+	public WebElement getday() {
+		WebElement day = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/div[2]/div[4]/div/select[1]"));
+		Select s = new Select(day);
+		s.selectByValue("12");
+		return day;
+	}
+
+	public WebElement getmonth() {
+		WebElement month = driver.findElement(By.name("DateOfBirthMonth"));
+		Select smonth = new Select(month);
+		smonth.selectByVisibleText("July");
+		return month;
+	}
+	
+	public WebElement getyear() {
+		WebElement year = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/div[2]/div[4]/div/select[3]"));
+		Select syear = new Select(year);
+		syear.selectByValue("2000");
+		return year;
+	}
+	
+	@FindBy(name = "Email")
+	WebElement email;
+	public WebElement getemail() {
+		return email;
+	}
+	
+	
+	@FindBy(name = "Company")
+	WebElement Company;
+	public WebElement getCompany() {
+		return Company;
+	}
+	
+	
+	@FindBy(id = "Password")
+	WebElement Password;
+	public WebElement getPassword() {
+		return Password;
+	}
+	
+	@FindBy(id = "ConfirmPassword")
+	WebElement ConfirmPassword;
+	public WebElement getConfirmPassword() {
+		return ConfirmPassword;
+	}
+	
+	@FindBy(id = "register-button")
+	WebElement register;
+	public WebElement getregister() {
+		return register;
+	}
+}
