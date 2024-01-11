@@ -1,0 +1,68 @@
+package com.testscripts;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class TC_ProductsView_01 extends TC_Login_01{
+	@Test(priority =2)
+	public void Productview() {		
+				
+		productview.getelectronics().click();	
+		productview.getcam().click();
+		productview.getnikon().click();
+        productview.getwishlist().click();
+        productview.getwishlistlink().click();
+        
+        WebElement cart_table2=driver.findElement(By.className("cart"));
+        String expectedProductName2 = "Nikon D5500 DSLR - Black"; 
+        boolean productFound2 = false;
+        java.util.List<WebElement> cartRows2 = cart_table2.findElements(By.tagName("tr"));
+
+        for (WebElement row2 : cartRows2) {
+            WebElement productCell2 = row2.findElement(By.className("product")); 
+            if (productCell2.getText().contains(expectedProductName2)) {
+                productFound2 = true;
+                break;
+            }
+        }
+
+        if (productFound2) {
+            System.out.println("Product added to wishlist successfully.");
+            
+        } else {
+            System.out.println("Product was not added to wishlist.");
+        }
+        
+        
+        driver.navigate().back();
+        productview.getaddtocart().click();
+		productview.getshoppingcart().click();
+		
+        WebElement cart_table=driver.findElement(By.className("cart"));
+		
+		 // Verify product in cart
+       String expectedProductName = "Nikon D5500 DSLR - Black"; 
+       boolean productFound = false;
+		
+		  // Find rows within the cart table
+       java.util.List<WebElement> cartRows = cart_table.findElements(By.tagName("tr"));
+
+       for (WebElement row : cartRows) {
+           WebElement productCell = row.findElement(By.className("product")); 
+//           System.out.println(productCell.getText());
+           if (productCell.getText().contains(expectedProductName)) {
+               productFound = true;
+               break;
+           }
+       }
+
+       if (productFound) {
+           System.out.println("Product added to cart successfully.");
+           
+       } else {
+           System.out.println("Product was not added to cart.");
+       }
+			
+	}
+}
